@@ -1,35 +1,30 @@
 ---
 name: User Story
 about: This template defines a user story
-title: "Search Books by Author"
-labels: enhancement
+title: ''
+labels: ''
 assignees: ''
+
 ---
 
-**As a** customer  
-**I need** to search for books by author  
-**So that** I can quickly find books written by a specific author  
+**As a** registered user  
+**I need** to log into my account  
+**So that** I can access my dashboard  
 
 ### Details and Assumptions
-* The system contains a list of books stored in the database.
-* Each book has an author field.
-* The search should be case-insensitive.
-* Partial author names should return matching results.
+* Users must already be registered  
+* Users must enter a valid email and password  
 
-### Acceptance Criteria
+### Acceptance Criteria (Gherkin)
 
-Scenario: Search books by full author name
-  Given the database contains books written by "J.K. Rowling"
-  When the user searches for "J.K. Rowling"
-  Then the system returns all books written by "J.K. Rowling"
+Given a registered user is on the login page  
+When the user enters a valid email and password  
+Then the user should be redirected to the dashboard  
 
-Scenario: Search books by partial author name
-  Given the database contains books written by "J.K. Rowling"
-  When the user searches for "Rowling"
-  Then the system returns all books written by "J.K. Rowling"
+Given a registered user enters an invalid password  
+When the user submits the login form  
+Then an error message should be displayed  
 
-Scenario: Search returns no results
-  Given the database contains no books written by "Unknown Author"
-  When the user searches for "Unknown Author"
-  Then the system returns an empty list
-  And displays a message "No books found"
+Given a user is not registered  
+When the user attempts to log in  
+Then access should be denied  
